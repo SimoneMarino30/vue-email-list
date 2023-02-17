@@ -10,14 +10,40 @@ const { createApp } = Vue;
 
 createApp({
   data() {
-    return {};
+    return {
+      randomEmails: [],
+    };
+  },
+
+  methods: {
+    printInPage() {
+      for (let i = 0; i < 10; i++) {
+        axios
+          .get("https://flynn.boolean.careers/exercises/api/random/mail")
+          .then((resp) => {
+            // console.log(resp.data.response);
+            if (this.randomEmails.length < 10) {
+              // console.log(randomEmails);
+              this.randomEmails.push(resp.data.response);
+            }
+          });
+      }
+    },
   },
 }).mount("#root");
 
 // AXIOS
+// randomEmails = [];
 
-axios
-  .get("https://flynn.boolean.careers/exercises/api/random/mail")
-  .then(function (resp) {
-    console.log(resp.data.response);
-  });
+// for (let i = 0; i < 10; i++) {
+//   axios
+//     .get("https://flynn.boolean.careers/exercises/api/random/mail")
+//     .then((resp) => {
+//       // console.log(resp.data.response);
+//       randomEmails.push(resp.data.response);
+
+//       if (randomEmails.length >= 10) {
+//         console.log(randomEmails);
+//       }
+//     });
+// }

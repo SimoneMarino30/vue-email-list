@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- TITLE -->
-    <title>Document</title>
+    <title>Vue mail list</title>
 
     <!-- BOOTSTRAP -->
     <link
@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- VUE JS -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.global.min.js"></script>
 
     <!-- AXIOS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
@@ -32,6 +33,27 @@
 
   <body>
     <!-- vue start -->
-    <div id="root"></div>
+    <div id="root">
+      <div class="container">
+        <h1 class="text-center my-5">Mail list</h1>
+        <button
+          class="btn btn-outline-success mb-5"
+          type="button"
+          @click="printInPage()"
+        >
+          Generate 10 random Emails
+        </button>
+        <ol
+          class="list-group list-group-numbered"
+          v-if="randomEmails.length >= 10"
+        >
+          <li v-for="randomMail in randomEmails" class="list-group-item">
+            {{ randomMail }}
+          </li>
+        </ol>
+      </div>
+    </div>
   </body>
 </html>
+
+<!-- FOR THE FUTURE: RICORDARSI DI TOGLIERE D-FLEX DI BOOTSTRAP -->
